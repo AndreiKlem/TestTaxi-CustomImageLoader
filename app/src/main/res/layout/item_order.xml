@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DefaultCardView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/MatchSize">
+
+        <TextView
+            android:id="@+id/start_prefix_tv"
+            style="@style/ItemCardPrefixText"
+            android:text="@string/from"
+            app:layout_constraintBaseline_toBaselineOf="@id/start_address_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/finish_prefix_tv"
+            style="@style/ItemCardPrefixText"
+            android:text="@string/to"
+            app:layout_constraintBaseline_toBaselineOf="@id/end_address_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/start_prefix_tv" />
+
+        <TextView
+            android:id="@+id/date_prefix_tv"
+            style="@style/ItemCardPrefixText"
+            android:text="@string/date"
+            app:layout_constraintBaseline_toBaselineOf="@id/date_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/finish_prefix_tv" />
+
+        <TextView
+            android:id="@+id/total_prefix_tv"
+            style="@style/ItemCardPrefixText"
+            android:text="@string/total"
+            app:layout_constraintBaseline_toBaselineOf="@id/total_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date_prefix_tv" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/card_prefix_barrier"
+            style="@style/WrapSize"
+            app:barrierDirection="end"
+            app:barrierMargin="@dimen/normalMargin"
+            app:constraint_referenced_ids="start_prefix_tv,finish_prefix_tv,date_prefix_tv,total_prefix_tv" />
+
+        <TextView
+            android:id="@+id/start_address_tv"
+            style="@style/ItemCardMainText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_prefix_barrier"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Пр. Ленина, д. 1" />
+
+        <TextView
+            android:id="@+id/end_address_tv"
+            style="@style/ItemCardMainText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_prefix_barrier"
+            app:layout_constraintTop_toBottomOf="@id/start_address_tv"
+            tools:text="Пр. Невский, д. 126" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            style="@style/ItemCardMainText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_prefix_barrier"
+            app:layout_constraintTop_toBottomOf="@id/end_address_tv"
+            tools:text="27 мая 2015" />
+
+        <TextView
+            android:id="@+id/total_tv"
+            style="@style/ItemCardMainText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_prefix_barrier"
+            app:layout_constraintTop_toBottomOf="@id/date_tv"
+            tools:text="RUB 450,00" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

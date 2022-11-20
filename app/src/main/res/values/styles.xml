@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MatchSize">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="WrapSize">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MatchWidthWrapHeight">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MatchWidthFillHeight">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="FillWidthWrapHeight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DefaultCardView" parent="MatchWidthWrapHeight">
+        <item name="contentPadding">@dimen/normalPadding</item>
+        <item name="cardCornerRadius">@dimen/normalRadius</item>
+        <item name="android:layout_marginBottom">@dimen/normalMargin</item>
+    </style>
+
+    <style name="ItemCardMainText" parent="FillWidthWrapHeight">
+        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ItemCardPrefixText" parent="WrapSize">
+        <item name="android:textSize">@dimen/bodyTextSize</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="DetailsImage" parent="MatchWidthFillHeight">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="DetailsCategory" parent="MatchWidthWrapHeight">
+        <item name="android:textSize">@dimen/bodyTextSize</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="DetailsInformation" parent="MatchWidthWrapHeight">
+        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="VerticalSpacer">
+        <item name="android:layout_height">@dimen/normalPadding</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="VerticalDivider" parent="MatchWidthWrapHeight">
+        <item name="android:layout_marginTop">@dimen/normalMargin</item>
+        <item name="android:layout_marginBottom">@dimen/normalMargin</item>
+    </style>
+
+    <style name="DetailsTitle" parent="MatchWidthWrapHeight">
+        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:layout_marginBottom">@dimen/normalMargin</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+</resources>

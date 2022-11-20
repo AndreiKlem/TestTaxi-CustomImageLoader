@@ -1,0 +1,28 @@
+package ru.aklem.customimageloader.util
+
+import android.util.Log
+import ru.aklem.customimageloader.data.remote.entity.PriceNetworkEntity
+import java.text.NumberFormat
+import java.util.*
+import kotlin.math.pow
+
+interface ConvertPrice {
+
+    fun getTotal(): String
+
+    class Base(private val price: PriceNetworkEntity) : ConvertPrice {
+        override fun getTotal(): String {
+            return try {
+                val currency = Currency.getInstance(price.currency)
+                val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+                numberFormat.currency = currency
+                val price = price.amount / 10.0.pow(currency.defaultFractionDigits)
+                numberFormat.format(price)
+            } catch (e: Exception) {
+                Log.d("CONVERT_PRICE", "getTotal(), $e")
+                ""
+            }
+        }
+    }
+
+}

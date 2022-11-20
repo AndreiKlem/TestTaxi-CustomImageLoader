@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TestTaxi-CustomImageLoader</string>
+    <string name="from">from</string>
+    <string name="to">to</string>
+    <string name="date">date</string>
+    <string name="total">total</string>
+    <string name="vehicle">vehicle</string>
+    <string name="time">order time</string>
+    <string name="model_and_licence">model, licence</string>
+    <string name="driver">driver</string>
+</resources>

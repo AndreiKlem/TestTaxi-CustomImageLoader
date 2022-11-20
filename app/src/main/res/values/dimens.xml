@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normalPadding">8dp</dimen>
+    <dimen name="normalRadius">4dp</dimen>
+    <dimen name="normalMargin">8dp</dimen>
+    <dimen name="titleTextSize">18sp</dimen>
+    <dimen name="bodyTextSize">14sp</dimen>
+</resources>
