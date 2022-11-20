@@ -54,7 +54,7 @@
                 style="@style/DetailsInformation"
                 tools:text="Пр. Невский, д. 126" />
 
-            <Space style="@style/VerticalSpacer" />
+            <com.google.android.material.divider.MaterialDivider style="@style/VerticalDivider" />
 
             <TextView
                 style="@style/DetailsCategory"

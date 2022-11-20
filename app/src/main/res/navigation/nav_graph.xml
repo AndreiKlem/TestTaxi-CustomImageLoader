@@ -8,17 +8,21 @@
     <fragment
         android:id="@+id/orderListFragment"
         android:name="ru.aklem.customimageloader.ui.OrderListFragment"
-        android:label="fragment_order_list"
+        android:label="@string/orders_screen_label"
         tools:layout="@layout/fragment_order_list" >
         <action
             android:id="@+id/action_orderListFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
         android:id="@+id/detailsFragment"
         android:name="ru.aklem.customimageloader.ui.DetailsFragment"
-        android:label="fragment_details"
+        android:label="@string/details_screen_label"
         tools:layout="@layout/fragment_details" />
 
 </navigation>

@@ -8,4 +8,6 @@
     <string name="time">order time</string>
     <string name="model_and_licence">model, licence</string>
     <string name="driver">driver</string>
+    <string name="orders_screen_label">Orders</string>
+    <string name="details_screen_label">Details</string>
 </resources>

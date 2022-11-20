@@ -41,7 +41,7 @@
 
     <style name="ItemCardPrefixText" parent="WrapSize">
         <item name="android:textSize">@dimen/bodyTextSize</item>
-        <item name="fontFamily">sans-serif-light</item>
+        <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
@@ -51,7 +51,7 @@
 
     <style name="DetailsCategory" parent="MatchWidthWrapHeight">
         <item name="android:textSize">@dimen/bodyTextSize</item>
-        <item name="fontFamily">sans-serif-light</item>
+        <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
