@@ -82,6 +82,10 @@ dependencies {
     // paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
+    // work manager
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    implementation "androidx.hilt:hilt-work:$hilt_work_version"
+
     // testing
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"

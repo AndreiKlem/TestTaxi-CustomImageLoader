@@ -1,6 +1,7 @@
 package ru.aklem.customimageloader.di
 
 import android.content.Context
+import androidx.work.WorkManager
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -51,9 +52,10 @@ class NetworkModule {
 
     @Provides
     fun provideCustomImageLoader(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
+        workManager: WorkManager
     ): CustomImageLoader {
-        return CustomImageLoader(context, BASE_URL)
+        return CustomImageLoader(context, BASE_URL, workManager)
     }
 
     private companion object {
