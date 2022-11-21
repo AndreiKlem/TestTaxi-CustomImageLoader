@@ -26,10 +26,15 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="FillWidthMatchHeight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
     <style name="DefaultCardView" parent="MatchWidthWrapHeight">
         <item name="contentPadding">@dimen/normalPadding</item>
         <item name="cardCornerRadius">@dimen/normalRadius</item>
-        <item name="android:layout_marginBottom">@dimen/normalMargin</item>
+        <item name="android:layout_margin">@dimen/smallMargin</item>
     </style>
 
     <style name="ItemCardMainText" parent="FillWidthWrapHeight">

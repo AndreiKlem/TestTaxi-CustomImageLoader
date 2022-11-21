@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchSize"
+    tools:context="ru.aklem.customimageloader.ui.DetailsFragment">
+
+    <ImageView
+        android:id="@+id/vehicle_iv"
+        style="@style/FillWidthMatchHeight"
+        android:contentDescription="@string/vehicle"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/image_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/vehicle_example" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/image_guideline"
+        style="@style/WrapSize"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <ScrollView
+        android:id="@+id/details_sv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:padding="@dimen/normalPadding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_guideline"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/city_tv"
+                style="@style/DetailsTitle"
+                tools:text="Санкт-Петербург" />
+
+            <TextView
+                style="@style/DetailsCategory"
+                android:text="@string/from" />
+
+            <TextView
+                android:id="@+id/start_place_tv"
+                style="@style/DetailsInformation"
+                tools:text="Пр. Ленина, д. 1" />
+
+            <Space style="@style/VerticalSpacer" />
+
+            <TextView
+                style="@style/DetailsCategory"
+                android:text="@string/to" />
+
+            <TextView
+                android:id="@+id/end_place_tv"
+                style="@style/DetailsInformation"
+                tools:text="Пр. Невский, д. 126" />
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/VerticalDivider" />
+
+            <TextView
+                style="@style/DetailsCategory"
+                android:text="@string/date" />
+
+            <TextView
+                android:id="@+id/date_details_tv"
+                style="@style/DetailsInformation"
+                tools:text="27 мая 2015" />
+
+            <Space style="@style/VerticalSpacer" />
+
+            <TextView
+                style="@style/DetailsCategory"
+                android:text="@string/total" />
+
+            <TextView
+                android:id="@+id/price_tv"
+                style="@style/DetailsInformation"
+                tools:text="RUB 450,00" />
+
+            <Space style="@style/VerticalSpacer" />
+
+            <TextView
+                android:id="@+id/detail_price_tv"
+                style="@style/DetailsCategory"
+                android:text="@string/time" />
+
+            <TextView
+                android:id="@+id/time_tv"
+                style="@style/DetailsInformation"
+                tools:text="16:36" />
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/VerticalDivider" />
+
+            <TextView
+                style="@style/DetailsCategory"
+                android:text="@string/model_and_licence" />
+
+            <TextView
+                android:id="@+id/vehicle_tv"
+                style="@style/DetailsInformation"
+                tools:text="Nissan Almera, х555мт98" />
+
+            <Space style="@style/VerticalSpacer" />
+
+            <TextView
+                style="@style/DetailsCategory"
+                android:text="@string/driver" />
+
+            <TextView
+                android:id="@+id/driver_tv"
+                style="@style/DetailsInformation"
+                tools:text="Иванов Иван Иванович" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

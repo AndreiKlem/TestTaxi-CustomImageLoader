@@ -20,10 +20,10 @@ class ImageDeleteWorker @AssistedInject constructor(
                 ?: throw IllegalArgumentException()
             val file = File(path)
             if (file.exists()) file.delete()
-            Log.wtf("DELETE_WORKER", "doWork() image $path successfully deleted")
+            Log.d("DELETE_WORKER", "doWork() image $path successfully deleted")
             Result.success()
         } catch (e: Exception) {
-            Log.wtf("DELETE_WORKER", "doWork() image delete failure")
+            Log.e("DELETE_WORKER", "doWork() image delete failure")
             Result.failure()
         }
     }

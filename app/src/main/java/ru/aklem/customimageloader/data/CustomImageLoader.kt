@@ -53,20 +53,20 @@ class CustomImageLoader @Inject constructor(
     private fun saveImageToInternalStorage(bitmap: Bitmap, image: File) {
         FileOutputStream(image).use {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
-            Log.wtf("IMAGE_LOADER", "saveImageToInternalStorage() $image")
+            Log.d("IMAGE_LOADER", "saveImageToInternalStorage() $image")
         }
     }
 
     private fun getImageFromInternalStorage(image: File): Bitmap {
         FileInputStream(image).use {
-            Log.wtf("IMAGE_LOADER", "getImageFromInternalStorage() $image")
+            Log.d("IMAGE_LOADER", "getImageFromInternalStorage() $image")
             return BitmapFactory.decodeStream(it)
         }
     }
 
     private fun scheduleDeleteFile(image: File) {
         val data = createInputData(image.path)
-        Log.wtf("IMAGE_LOADER", "scheduleDeleteFile()")
+        Log.d("IMAGE_LOADER", "scheduleDeleteFile()")
         val worker = OneTimeWorkRequestBuilder<ImageDeleteWorker>()
             .setInitialDelay(10, TimeUnit.MINUTES)
             .setInputData(data)
@@ -74,7 +74,7 @@ class CustomImageLoader @Inject constructor(
         workManager.enqueueUniqueWork(
             WORK_NAME,
             ExistingWorkPolicy.APPEND_OR_REPLACE,
-            worker
+            mutableListOf(worker)
         )
     }
 
