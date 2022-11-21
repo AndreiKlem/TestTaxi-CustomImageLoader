@@ -1,6 +1,5 @@
 package ru.aklem.customimageloader.ui
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -8,8 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.aklem.customimageloader.R
@@ -32,12 +29,7 @@ class OrderListFragment : Fragment(R.layout.fragment_order_list) {
                 openDetailsFragment(orderId)
             }
         })
-        val orientation = resources.configuration.orientation
-        val layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT)
-            LinearLayoutManager(requireContext())
-        else
-            GridLayoutManager(requireContext(), COLUMNS_AMOUNT)
-        binding.ordersRv.layoutManager = layoutManager
+
         binding.ordersRv.adapter = adapter
         observeOrders(adapter)
     }
@@ -57,7 +49,4 @@ class OrderListFragment : Fragment(R.layout.fragment_order_list) {
         }
     }
 
-    companion object {
-        private const val COLUMNS_AMOUNT = 2
-    }
 }
