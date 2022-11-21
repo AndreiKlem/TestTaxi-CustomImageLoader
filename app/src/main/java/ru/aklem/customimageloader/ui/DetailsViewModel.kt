@@ -27,7 +27,7 @@ class DetailsViewModel @Inject constructor(
         get() = imageValue
 
     fun loadOrderDetails() {
-        val orderId = savedStateHandle.get<Long>(ORDER_ID_KEY) ?: throw IllegalArgumentException()
+        val orderId = savedStateHandle.get<Long>(ORDER_ID_KEY) ?: throw IllegalArgumentException() // todo refactor
         viewModelScope.launch(ioDispatcher) {
             val order = orderDetailsRepository.getOrderById(orderId)
             orderValue.postValue(order)

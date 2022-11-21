@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestTaxi-CustomImageLoader</string>
+    <string name="app_name">BestTaxi</string>
     <string name="from">from</string>
     <string name="to">to</string>
     <string name="date">date</string>
