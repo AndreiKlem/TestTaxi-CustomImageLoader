@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BestTaxi</string>
+    <string name="from">от</string>
+    <string name="to">до</string>
+    <string name="date">дата</string>
+    <string name="total">стоимость</string>
+    <string name="vehicle">машина</string>
+    <string name="time">время заказа</string>
+    <string name="model_and_licence">модель, номер</string>
+    <string name="driver">водитель</string>
+    <string name="orders_screen_label">Заказы</string>
+    <string name="details_screen_label">Подробности</string>
+</resources>

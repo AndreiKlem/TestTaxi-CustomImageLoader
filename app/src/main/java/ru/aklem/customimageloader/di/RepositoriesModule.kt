@@ -14,9 +14,11 @@ import ru.aklem.customimageloader.domain.OrderListRepository
 interface RepositoriesModule {
 
     @Binds
-    fun bindOrdersRepository(ordersRepository: OrderListRepositoryImpl): OrderListRepository
+    fun bindOrdersRepository(ordersRepositoryImpl: OrderListRepositoryImpl): OrderListRepository
 
     @Binds
-    fun bindOrderDetailsRepository(orderDetailsRepository: OrderDetailsRepositoryImpl): OrderDetailsRepository
+    fun bindOrderDetailsRepository(
+        orderDetailsRepositoryImpl: OrderDetailsRepositoryImpl
+    ): OrderDetailsRepository
 
 }
