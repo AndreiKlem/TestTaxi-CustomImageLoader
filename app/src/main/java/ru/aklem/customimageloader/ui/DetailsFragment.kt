@@ -9,7 +9,7 @@ import ru.aklem.customimageloader.R
 import ru.aklem.customimageloader.databinding.FragmentDetailsBinding
 
 @AndroidEntryPoint
-class DetailsFragment: Fragment(R.layout.fragment_details) {
+class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private lateinit var binding: FragmentDetailsBinding
     private val viewModel: DetailsViewModel by viewModels()
@@ -20,6 +20,7 @@ class DetailsFragment: Fragment(R.layout.fragment_details) {
 
         viewModel.loadOrderDetails()
         observeOrder()
+        observeImage()
     }
 
     private fun observeOrder() {
@@ -27,7 +28,7 @@ class DetailsFragment: Fragment(R.layout.fragment_details) {
             with(binding) {
                 cityTv.text = if (order.startAddress.city != order.endAddress.city) {
                     listOf(order.startAddress.city, order.endAddress.city)
-                        .joinToString( " - ")
+                        .joinToString(" - ")
                 } else
                     order.startAddress.city
                 startPlaceTv.text = order.startAddress.place
@@ -42,7 +43,14 @@ class DetailsFragment: Fragment(R.layout.fragment_details) {
         }
     }
 
+    private fun observeImage() {
+        viewModel.image.observe(viewLifecycleOwner) { image ->
+            binding.vehicleIv.setImageBitmap(image)
+        }
+    }
+
     companion object {
         const val ORDER_ID_KEY = "order_id_key"
     }
+
 }

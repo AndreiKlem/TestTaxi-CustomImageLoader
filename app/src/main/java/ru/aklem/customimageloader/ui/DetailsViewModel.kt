@@ -1,5 +1,6 @@
 package ru.aklem.customimageloader.ui
 
+import android.graphics.Bitmap
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -21,10 +22,17 @@ class DetailsViewModel @Inject constructor(
     val order: LiveData<Order>
         get() = orderValue
 
+    private val imageValue = MutableLiveData<Bitmap>()
+    val image: LiveData<Bitmap>
+        get() = imageValue
+
     fun loadOrderDetails() {
         val orderId = savedStateHandle.get<Long>(ORDER_ID_KEY) ?: throw IllegalArgumentException()
         viewModelScope.launch(ioDispatcher) {
-            orderValue.postValue(orderDetailsRepository.getOrderById(orderId))
+            val order = orderDetailsRepository.getOrderById(orderId)
+            orderValue.postValue(order)
+            imageValue.postValue(orderDetailsRepository.getImage(order.vehicle.photo))
         }
     }
+
 }
