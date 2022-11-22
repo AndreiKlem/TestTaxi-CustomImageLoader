@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MatchSize"
@@ -10,11 +9,50 @@
         android:id="@+id/vehicle_iv"
         style="@style/DetailsImage"
         android:contentDescription="@string/vehicle"
+        app:layout_constraintBottom_toTopOf="@id/image_guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/vehicle_example" />
+
+    <ProgressBar
+        android:id="@+id/image_progress_bar"
+        style="@style/WrapSize"
+        app:layout_constraintBottom_toTopOf="@id/image_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/error_group"
+        style="@style/WrapSize"
+        app:constraint_referenced_ids="error_tv,retry_button" />
+
+    <TextView
+        android:id="@+id/error_tv"
+        style="@style/WrapSize"
+        android:layout_marginBottom="@dimen/normalMargin"
+        android:text="@string/error_loading_image"
+        app:layout_constraintBottom_toTopOf="@id/retry_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/retry_button"
+        style="@style/WrapSize"
+        android:text="@string/try_again"
+        app:layout_constraintBottom_toTopOf="@id/image_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/error_tv" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/image_guideline"
+        style="@style/WrapSize"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
     <ScrollView
         style="@style/MatchWidthFillHeight"
@@ -22,7 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vehicle_iv">
+        app:layout_constraintTop_toBottomOf="@id/image_guideline">
 
         <LinearLayout
             android:layout_width="match_parent"

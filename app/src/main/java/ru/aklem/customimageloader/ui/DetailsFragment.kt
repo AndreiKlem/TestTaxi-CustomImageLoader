@@ -2,11 +2,14 @@ package ru.aklem.customimageloader.ui
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ru.aklem.customimageloader.R
 import ru.aklem.customimageloader.databinding.FragmentDetailsBinding
+import ru.aklem.customimageloader.util.Result
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -18,12 +21,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailsBinding.bind(view)
 
-        viewModel.loadOrderDetails()
-        observeOrder()
-        observeImage()
+        renderOrder()
+        renderImage()
+        setListeners()
     }
 
-    private fun observeOrder() {
+    private fun renderOrder() {
         viewModel.order.observe(viewLifecycleOwner) { order ->
             with(binding) {
                 cityTv.text = if (order.startAddress.city != order.endAddress.city) {
@@ -43,9 +46,29 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
-    private fun observeImage() {
-        viewModel.image.observe(viewLifecycleOwner) { image ->
-            binding.vehicleIv.setImageBitmap(image)
+    private fun renderImage() {
+        viewModel.image.observe(viewLifecycleOwner) { imageResult ->
+            binding.vehicleIv.visibility = GONE
+            binding.errorGroup.visibility = GONE
+            binding.imageProgressBar.visibility = GONE
+            when (imageResult) {
+                Result.InProgress -> {
+                    binding.imageProgressBar.visibility = VISIBLE
+                }
+                is Result.Error -> {
+                    binding.errorGroup.visibility = VISIBLE
+                }
+                is Result.Success -> {
+                    binding.vehicleIv.setImageBitmap(imageResult.data)
+                    binding.vehicleIv.visibility = VISIBLE
+                }
+            }
+        }
+    }
+
+    private fun setListeners() {
+        binding.retryButton.setOnClickListener {
+            viewModel.onTryAgainClick()
         }
     }
 

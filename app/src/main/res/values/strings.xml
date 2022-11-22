@@ -10,4 +10,6 @@
     <string name="driver">driver</string>
     <string name="orders_screen_label">Orders</string>
     <string name="details_screen_label">Details</string>
+    <string name="try_again">try again</string>
+    <string name="error_loading_image">Error loading image</string>
 </resources>

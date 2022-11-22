@@ -10,4 +10,6 @@
     <string name="driver">водитель</string>
     <string name="orders_screen_label">Заказы</string>
     <string name="details_screen_label">Подробности</string>
+    <string name="try_again">перезагрузить</string>
+    <string name="error_loading_image">Ошибка загрузки изображения</string>
 </resources>

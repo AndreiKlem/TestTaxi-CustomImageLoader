@@ -9,12 +9,14 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import dagger.hilt.android.qualifiers.ApplicationContext
+import ru.aklem.customimageloader.util.Result
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.random.Random
 
 class CustomImageLoader @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -22,32 +24,33 @@ class CustomImageLoader @Inject constructor(
     private val workManager: WorkManager
 ) {
 
-    fun getImage(urn: String): Bitmap {
-        try {
+    fun getImage(urn: String): Result<Bitmap> {
+        val result = try {
+            if (Random.nextBoolean()) throw IllegalArgumentException()
             val url = URL(baseUrl + PATH + urn)
             val image = File(context.filesDir, urn)
-            return if (image.exists()) {
-                getImageFromInternalStorage(image)
-            } else {
-                val connection = url.openConnection() as HttpURLConnection
-                connection.connect()
-                val inputStream: InputStream = connection.inputStream
-                val bufferedInputStream = BufferedInputStream(inputStream)
-                val bitmap = BitmapFactory.decodeStream(bufferedInputStream)
-                saveImageToInternalStorage(bitmap, image)
-                scheduleDeleteFile(image)
-                bitmap
-            }
+            Result.Success(
+                if (image.exists()) {
+                    getImageFromInternalStorage(image)
+                } else {
+                    val connection = url.openConnection() as HttpURLConnection
+                    connection.connect()
+                    val inputStream: InputStream = connection.inputStream
+                    val bufferedInputStream = BufferedInputStream(inputStream)
+                    val bitmap = BitmapFactory.decodeStream(bufferedInputStream)
+                    saveImageToInternalStorage(bitmap, image)
+                    scheduleDeleteFile(image)
+                    bitmap
+                }
+            )
         } catch (e: IOException) {
-            // todo wrap to appException
-            throw e
+            Result.Error(e)
         } catch (e: MalformedURLException) {
-            // todo wrap to appException
-            throw e
+            Result.Error(e)
         } catch (e: Exception) {
-            // todo wrap other exceptions
-            throw e
+            Result.Error(e)
         }
+        return result
     }
 
     private fun saveImageToInternalStorage(bitmap: Bitmap, image: File) {

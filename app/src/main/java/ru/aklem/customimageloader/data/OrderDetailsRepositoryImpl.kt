@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import ru.aklem.customimageloader.data.local.OrdersDao
 import ru.aklem.customimageloader.domain.OrderDetailsRepository
 import ru.aklem.customimageloader.domain.model.Order
+import ru.aklem.customimageloader.util.Result
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,7 +18,7 @@ class OrderDetailsRepositoryImpl @Inject constructor(
         return ordersDao.getById(orderId).toOrder()
     }
 
-    override suspend fun getImage(urn: String): Bitmap {
+    override suspend fun getImage(urn: String): Result<Bitmap> {
         return imageLoader.getImage(urn)
     }
 
