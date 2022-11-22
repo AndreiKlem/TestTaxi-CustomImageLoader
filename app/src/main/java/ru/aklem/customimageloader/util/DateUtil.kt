@@ -1,6 +1,5 @@
 package ru.aklem.customimageloader.util
 
-import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,8 +14,7 @@ interface DateUtil {
             return try {
                 SimpleDateFormat(DATE_FROMAT, Locale.getDefault()).format(date.toLong())
             } catch (e: Exception) {
-                Log.e("DateUtil", "date parsing error $e")
-                ""
+                "Error parsing date"
             }
         }
 
@@ -24,8 +22,7 @@ interface DateUtil {
             return try {
                 SimpleDateFormat(TIME_FORMAT, Locale.getDefault()).format(date.toLong())
             } catch (e: Exception) {
-                Log.e("DateUtil", "time parsing error $e")
-                ""
+                "Error parsing time"
             }
         }
 
@@ -35,8 +32,7 @@ interface DateUtil {
                     .parse(orderTime) ?: throw java.lang.IllegalStateException()
                 date.time.toString()
             } catch (e: Exception) {
-                Log.e("DateUtil", "order time parsing error $e")
-                ""
+                "Error parsing json date"
             }
         }
 
